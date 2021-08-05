@@ -21,6 +21,8 @@ import java.util.Arrays;
  * 
  */
 
+
+// 정렬하지 않고 비교
 class Solution {
     public boolean solution(String[] phone_book) {
         boolean answer = true;
@@ -36,8 +38,7 @@ class Solution {
         	System.out.println(phone_book[i]);
         }
         
-        
-        // 
+        // (0,1), (0,2), (1,2) 인덱스들 비교
         for (int i = 0; i < len-1; i++) {
         	for (int j = i+1; j < len; j++) {
         		if (phone_book[i].indexOf(phone_book[j]) == 0) {
@@ -54,7 +55,8 @@ class Solution {
     }
 }
 
-// hashSet 사용해서 해보기...
+
+// 정렬 후, 비교
 class Solution2 {
     public boolean solution(String[] phone_book) {
         boolean answer = true;
@@ -69,11 +71,14 @@ class Solution2 {
 
         }
         
+        // 배열 정렬
         Arrays.sort(phone_book);
+   
         for (String phone : phone_book) {
         	System.out.println(phone);
         }
         
+        // 앞 뒤 문자열만 비교
         for (int i = 0; i < len-1; i++) {
     		if (phone_book[i+1].indexOf(phone_book[i]) == 0) {
     			answer = false;
